@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Blood Donor</string>
+    <string name="bmi_title">Body Mass Index Calculator</string>
+    <string name="convert_title">Convert feet to meters</string>
+    <string-array name="bloodGroup">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
+    <string-array name="feet">
+        <item>Feet</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="inch">
+        <item>Inch</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+</resources>
