@@ -1,55 +1,91 @@
 package com.example.blooddonor;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Homepage extends AppCompatActivity {
 
+public class Homepage extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
-
-    // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
     private ActionBarDrawerToggle drawerToggle;
+    TextView groupa1, groupa2, groupb1, groupb2, groupab1, groupab2, groupo1, groupo2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_homepage);
 
         // Set a Toolbar to replace the ActionBar.
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // This will display an Up icon (<-), we will replace it with hamburger later
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Find our drawer view
-        mDrawer = findViewById(R.id.drawer_layout);
-        //drawerToggle = setupDrawerToggle();
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         // Find our drawer view
-        nvDrawer = findViewById(R.id.nvView);
+        nvDrawer = (NavigationView) findViewById(R.id.nvView);
+        //nvDrawer.setCheckedItem(R.id.events); //*******************************************************************set my me*************************************************
         // Setup drawer view
         setupDrawerContent(nvDrawer);
 
+        // Set a Toolbar to replace the ActionBar.
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Find our drawer view
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = setupDrawerToggle();
+
+        // Setup toggle to display hamburger icon with nice animation
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerToggle.syncState();
+
+        // Tie DrawerLayout events to the ActionBarToggle
+        mDrawer.addDrawerListener(drawerToggle);
+
+        init();
+
     }
 
-//    private ActionBarDrawerToggle setupDrawerToggle() {
-//        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
-//        // and will not render the hamburger icon without it.
-//        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
-//    }
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
+        // and will not render the hamburger icon without it.
+        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        drawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggles
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -67,30 +103,27 @@ public class Homepage extends AppCompatActivity {
         Fragment fragment = null;
         Class fragmentClass;
         switch(menuItem.getItemId()) {
-            case R.id.db:
-                fragmentClass = Homepage.class;
+            case R.id.profile:
+                fragmentClass = Profile.class;
                 break;
-//            case R.id.profile:
-//                fragmentClass = Profile.class;
-//                break;
-//            case R.id.event:
-//                fragmentClass = Events.class;
-//                break;
-//            case R.id.searchDonor:
-//                fragmentClass = SearchDonor.class;
-//                break;
-//            case R.id.donorList:
-//                fragmentClass = DonorList.class;
-//                break;
-            case R.id.bmi_calculator:
-                fragmentClass = BMI_Calculator.class;
+            case R.id.findDonor:
+                fragmentClass = FindDonor.class;
                 break;
-//            case R.id.settings:
-//                fragmentClass = Settings.class;
-//                break;
-//            case R.id.logout:
-//                fragmentClass = Logout.class;
-//                break;
+            case R.id.donorList:
+                fragmentClass = DonorList.class;
+                break;
+            case R.id.bloodInventory:
+                fragmentClass = BloodInventory.class;
+                break;
+            case R.id.events:
+                fragmentClass = Events.class;
+                break;
+            case R.id.bmiCalculator:
+                fragmentClass = BMICalculator.class;
+                break;
+            case R.id.logout:
+                fragmentClass = Logout.class;
+                break;
             default:
                 fragmentClass = Homepage.class;
         }
@@ -115,13 +148,51 @@ public class Homepage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    private void init()
+    {
+//        groupa1 = findViewById(R.id.groupa1);
+//        groupa2 = findViewById(R.id.groupa2);
+//        groupb1 = findViewById(R.id.groupb1);
+//        groupb2 = findViewById(R.id.groupb2);
+//        groupab1 = findViewById(R.id.groupab1);
+//        groupab2 = findViewById(R.id.groupab2);
+//        groupo1 = findViewById(R.id.groupo1);
+//        groupo2 = findViewById(R.id.groupo2);
+        setBloodQuantity();
+    }
+
+    private static final int TIME_INTERVAL = 2000;
+    private long mBackPressed;
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+
+    @Override
+    public void onBackPressed() {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed();
+            return;
+        } else {
+            Toast.makeText(getBaseContext(), "Press back to exit.", Toast.LENGTH_SHORT).show();
+            mBackPressed = System.currentTimeMillis();
+        }
+
+    }
+
+    private void setBloodQuantity()
+    {
+//        groupa1.setText("32");
+//        groupa2.setText("32");
+//        groupb1.setText("32");
+//        groupb2.setText("32");
+//        groupab1.setText("32");
+//        groupab2.setText("32");
+//        groupo1.setText("32");
+//        groupo2.setText("32");
+    }
+
 }

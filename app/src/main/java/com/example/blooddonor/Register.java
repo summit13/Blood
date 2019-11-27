@@ -16,6 +16,7 @@ public class Register extends AppCompatActivity {
     Button getImageButton,registerButton;
     ImageView imageField;
     Spinner bloodGroupField;
+    String name, address, dob, phone, username, password, bloodGroup;
 
 
     @Override
@@ -99,25 +100,37 @@ public class Register extends AppCompatActivity {
 
     public void addUser()
     {
-        connectivity db = new connectivity(this);
-        String result = db.addUser(
-                nameField.getText().toString(),
-                addressField.getText().toString(),
-                dobField.getText().toString(),
-                phoneField.getText().toString(),
-                usernameField.getText().toString(),
-                passwordField.getText().toString(),
-                bloodGroupField.getSelectedItem().toString());
+//        connectivity connectivity = new connectivity(this);
+//        String result = connectivity.addUser(
+//                nameField.getText().toString(),
+//                addressField.getText().toString(),
+//                dobField.getText().toString(),
+//                phoneField.getText().toString(),
+//                usernameField.getText().toString(),
+//                passwordField.getText().toString(),
+//                bloodGroupField.getSelectedItem().toString());
+//
+//        Toast.makeText(this, result,Toast.LENGTH_LONG).show();
+//
+//        nameField.setText("");
+//        addressField.setText("");
+//        phoneField.setText("");
+//        dobField.setText("");
+//        usernameField.setText("");
+//        passwordField.setText("");
+//        confirmPasswordField.setText("");
 
-        Toast.makeText(this, result,Toast.LENGTH_LONG).show();
+          name = nameField.getText().toString();
+          address = addressField.getText().toString();
+          dob = dobField.getText().toString();
+          phone = phoneField.getText().toString();
+          username = usernameField.getText().toString();
+          password = passwordField.getText().toString();
+          bloodGroup = bloodGroupField.getSelectedItem().toString();
 
-        nameField.setText("");
-        addressField.setText("");
-        phoneField.setText("");
-        dobField.setText("");
-        usernameField.setText("");
-        passwordField.setText("");
-        confirmPasswordField.setText("");
+          String method = "register";
+          BackgroundTask backgroundTask = new BackgroundTask(this);
+          backgroundTask.execute(method, name, address, dob, phone, username, password, bloodGroup);
 
     }
 }
