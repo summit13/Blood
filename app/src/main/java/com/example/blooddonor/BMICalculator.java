@@ -15,18 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BMICalculator.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BMICalculator#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BMICalculator extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -36,19 +25,8 @@ public class BMICalculator extends Fragment {
     Spinner feet, inch;
     Button calculate, calculatemeters;
 
-    private OnFragmentInteractionListener mListener;
-
     public BMICalculator() {
         // Required empty public constructor
-    }
-
-    public static BMICalculator newInstance(String param1, String param2) {
-        BMICalculator fragment = new BMICalculator();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -156,15 +134,6 @@ public class BMICalculator extends Fragment {
         height.setText(String.valueOf(meters));
     }
 
-
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -174,21 +143,6 @@ public class BMICalculator extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

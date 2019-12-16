@@ -8,22 +8,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-
 
 public class Homepage extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
-    TextView groupa1, groupa2, groupb1, groupb2, groupab1, groupab2, groupo1, groupo2;
+    private String userEmail;
 
 
     @Override
@@ -31,11 +30,16 @@ public class Homepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+        // create the get Intent object
+        Intent intent = getIntent();
+
+        userEmail = intent.getStringExtra("userEmail");
+
         // Set a Toolbar to replace the ActionBar.
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // This will display an Up icon (<-), we will replace it with hamburger later
+        // This will display an Up icon (<-)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Find our drawer view
@@ -62,8 +66,6 @@ public class Homepage extends AppCompatActivity {
 
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.addDrawerListener(drawerToggle);
-
-        init();
 
     }
 
@@ -112,11 +114,11 @@ public class Homepage extends AppCompatActivity {
             case R.id.donorList:
                 fragmentClass = DonorList.class;
                 break;
-            case R.id.bloodInventory:
-                fragmentClass = BloodInventory.class;
-                break;
             case R.id.events:
                 fragmentClass = Events.class;
+                break;
+            case R.id.addEvents:
+                fragmentClass = AddEvents.class;
                 break;
             case R.id.bmiCalculator:
                 fragmentClass = BMICalculator.class;
@@ -125,7 +127,7 @@ public class Homepage extends AppCompatActivity {
                 fragmentClass = Logout.class;
                 break;
             default:
-                fragmentClass = Homepage.class;
+                fragmentClass = AddEvents.class;
         }
 
         try {
@@ -154,18 +156,7 @@ public class Homepage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init()
-    {
-//        groupa1 = findViewById(R.id.groupa1);
-//        groupa2 = findViewById(R.id.groupa2);
-//        groupb1 = findViewById(R.id.groupb1);
-//        groupb2 = findViewById(R.id.groupb2);
-//        groupab1 = findViewById(R.id.groupab1);
-//        groupab2 = findViewById(R.id.groupab2);
-//        groupo1 = findViewById(R.id.groupo1);
-//        groupo2 = findViewById(R.id.groupo2);
-        setBloodQuantity();
-    }
+
 
     private static final int TIME_INTERVAL = 2000;
     private long mBackPressed;
@@ -182,17 +173,4 @@ public class Homepage extends AppCompatActivity {
         }
 
     }
-
-    private void setBloodQuantity()
-    {
-//        groupa1.setText("32");
-//        groupa2.setText("32");
-//        groupb1.setText("32");
-//        groupb2.setText("32");
-//        groupab1.setText("32");
-//        groupab2.setText("32");
-//        groupo1.setText("32");
-//        groupo2.setText("32");
-    }
-
 }

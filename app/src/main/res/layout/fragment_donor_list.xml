@@ -3,13 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonorList">
+    tools:context=".FindDonor">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_donorlist_fragment"
-        android:textSize="30dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donor's List"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="90dp"
+            android:id="@+id/view"/>
+
+        <ListView
+            android:id="@+id/donorList"
+            android:layout_width="match_parent"
+            android:layout_height="598dp"
+            android:layout_below="@id/view"
+            android:layout_marginTop="25dp"/>
+
+    </RelativeLayout>
 
 </FrameLayout>

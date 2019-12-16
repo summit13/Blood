@@ -21,10 +21,10 @@
         app:srcCompat="@drawable/blood_donation" />
 
     <EditText
-        android:id="@+id/usernameField"
+        android:id="@+id/emailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="Email"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="40dp"
@@ -46,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#bb0a1e"
-        android:onClick="login"
         android:text="Login" />
 
     <TextView
@@ -65,22 +64,6 @@
         android:onClick="registerAction"
         android:text="Sign Up"
         android:textSize="20sp"/>
-
-    <Button
-        android:id="@+id/intent1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="calculate"
-        android:text="calculate" />
-
-    <Button
-        android:id="@+id/drawer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="navigate"
-        android:text="navigate" />
 
 </LinearLayout>
 </ScrollView>

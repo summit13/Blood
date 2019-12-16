@@ -21,11 +21,11 @@ public class connectivity extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         //admin_table
-        String admin_info = "CREATE TABLE admin_info (adminID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                "username TEXT NOT NULL, " +
-                "password TEXT NOT NULL)";
-
-        db.execSQL(admin_info);
+//        String admin_info = "CREATE TABLE admin_info (adminID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+//                "username TEXT NOT NULL, " +
+//                "password TEXT NOT NULL)";
+//
+//        db.execSQL(admin_info);
 
         //blood_inventory table
         String blood_inventory = "CREATE TABLE \"blood_inventory\" (\n" +
@@ -33,7 +33,6 @@ public class connectivity extends SQLiteOpenHelper
                 "\t\"quantity\"\tINTEGER NOT NULL,\n" +
                 "\tPRIMARY KEY(\"blood_group\")\n" +
                 ")";
-
         db.execSQL(blood_inventory);
 
         //user info table
@@ -43,7 +42,7 @@ public class connectivity extends SQLiteOpenHelper
                 "\t\"address\"\tTEXT NOT NULL,\n" +
                 "\t\"dob\"\tTEXT NOT NULL,\n" +
                 "\t\"phone\"\tTEXT NOT NULL,\n" +
-                "\t\"username\"\tTEXT NOT NULL,\n" +
+                "\t\"email\"\tTEXT NOT NULL,\n" +
                 "\t\"password\"\tTEXT NOT NULL,\n" +
                 "\t\"blood_group\"\tTEXT NOT NULL\n" +
                 ")";
@@ -56,12 +55,12 @@ public class connectivity extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
 //        db.execSQL("DROP TABLE IF EXISTS admin_info");
-//        db.execSQL("DROP TABLE IF EXISTS user_info");
-//        db.execSQL("DROP TABLE IF EXISTS blood_inventory");
+        db.execSQL("DROP TABLE IF EXISTS user_info");
+        db.execSQL("DROP TABLE IF EXISTS blood_inventory");
         onCreate(db);
     }
 
-    public String addUser(String name, String address, String dob, String phone, String username, String password, String blood_group)
+    public String addUser(String name, String address, String dob, String phone, String email, String password, String blood_group)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -69,7 +68,7 @@ public class connectivity extends SQLiteOpenHelper
         cv.put("address",address);
         cv.put("dob",dob);
         cv.put("phone",phone);
-        cv.put("username",username);
+        cv.put("email",email);
         cv.put("password",password);
         cv.put("blood_group",blood_group);
 

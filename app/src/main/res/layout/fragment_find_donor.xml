@@ -5,11 +5,48 @@
     android:layout_height="match_parent"
     tools:context=".FindDonor">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_finddonor_fragment"
-        android:textSize="30dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Your Donor"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="90dp"
+        android:id="@+id/view"/>
+
+        <Spinner
+            android:id="@+id/chooseBG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:entries="@array/bloodGroup"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/findDonor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/chooseBG"
+            android:layout_marginTop="60dp"
+            android:text="Search Donor"/>
+
+        <ListView
+            android:id="@+id/sortedList"
+            android:layout_width="match_parent"
+            android:layout_height="598dp"
+            android:layout_below="@id/findDonor"
+            android:layout_marginTop="25dp"/>
+
+
+    </RelativeLayout>
+
+
 
 </FrameLayout>
