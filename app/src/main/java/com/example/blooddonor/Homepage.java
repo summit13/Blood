@@ -22,8 +22,7 @@ public class Homepage extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
-    private String userEmail;
-
+    public static String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,7 @@ public class Homepage extends AppCompatActivity {
         Intent intent = getIntent();
 
         userEmail = intent.getStringExtra("userEmail");
+        System.out.println(userEmail);
 
         // Set a Toolbar to replace the ActionBar.
         toolbar = findViewById(R.id.toolbar);
@@ -108,10 +108,10 @@ public class Homepage extends AppCompatActivity {
             case R.id.profile:
                 fragmentClass = Profile.class;
                 break;
-            case R.id.findDonor:
+            case R.id.searchDonor:
                 fragmentClass = FindDonor.class;
                 break;
-            case R.id.donorList:
+            case R.id.donorsListView:
                 fragmentClass = DonorList.class;
                 break;
             case R.id.events:
@@ -127,7 +127,7 @@ public class Homepage extends AppCompatActivity {
                 fragmentClass = Logout.class;
                 break;
             default:
-                fragmentClass = AddEvents.class;
+                fragmentClass = Homepage.class;
         }
 
         try {

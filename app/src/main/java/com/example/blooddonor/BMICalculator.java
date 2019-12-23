@@ -66,7 +66,6 @@ public class BMICalculator extends Fragment {
         });
         return view;
 
-
     }
 
     public void checkValue()

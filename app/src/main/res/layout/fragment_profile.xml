@@ -5,20 +5,110 @@
     android:layout_height="match_parent"
     tools:context=".FindDonor">
 
+    <TextView
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:text="Your Profile"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_marginTop="80dp">
 
         <TextView
-            android:id="@+id/view"
+            android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="10dp"
-            android:text="Your Profile"
-            android:textSize="30dp" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:text="Address: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/userAddress"
+            android:layout_toEndOf="@id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userAddress"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:text="DOB: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/userDob"
+            android:layout_toEndOf="@id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userAddress"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="53dp"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userDob"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:text="Phone: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/userPhone"
+            android:layout_toEndOf="@id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userDob"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userPhone"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:text="Password: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/userPassword"
+            android:layout_toEndOf="@id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userPhone"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="5dp"/>
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userPassword"
+            android:layout_marginLeft="155dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="UPDATE"
+            android:textSize="17sp" />
     </RelativeLayout>
 
 </FrameLayout>

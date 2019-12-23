@@ -1,20 +1,20 @@
 package com.example.blooddonor.Model;
 
-public class Events {
+public class ViewEvents {
     String eventTitle, eventDescription, eventDate, eventTime;
 
-    public Events(String eventTitle, String eventDescription, String eventDate, String eventTime) {
+    public ViewEvents(String eventTitle, String eventDescription, String eventDate, String eventTime) {
         this.eventTitle = eventTitle;
         this.eventDescription = eventDescription;
         this.eventDate = eventDate;
         this.eventTime = eventTime;
     }
 
+    public ViewEvents() {}
+
     public String getEventTitle() {
         return eventTitle;
     }
-
-    public Events(){ }
 
     public void setEventTitle(String eventTitle) {
         this.eventTitle = eventTitle;

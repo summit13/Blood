@@ -7,17 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.blooddonor.Model.ViewEvents;
+import com.example.blooddonor.Model.ViewDonors;
 import com.example.blooddonor.R;
 
 import java.util.ArrayList;
 
-public class EventsAdapter extends BaseAdapter {
-
+public class DonorsAdapter extends BaseAdapter {
     Context context;
-    ArrayList<ViewEvents> arrayList;
+    ArrayList<ViewDonors> arrayList;
 
-    public EventsAdapter(Context context, ArrayList<ViewEvents> arrayList)
+    public DonorsAdapter(Context context, ArrayList<ViewDonors> arrayList)
     {
         this.context = context;
         this.arrayList = arrayList;
@@ -40,20 +39,18 @@ public class EventsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.events_list_view, null);
-        TextView title = convertView.findViewById(R.id.event_title);
-        TextView description = convertView.findViewById(R.id.event_description);
-        TextView date = convertView.findViewById(R.id.event_date);
-        TextView time = convertView.findViewById(R.id.event_time);
+        convertView = inflater.inflate(R.layout.donors_list_view, null);
+        TextView name = convertView.findViewById(R.id.name);
+        TextView address = convertView.findViewById(R.id.address);
+        TextView phone = convertView.findViewById(R.id.phone);
+        TextView bloodGroup = convertView.findViewById(R.id.bloodGroup);
 
-        ViewEvents viewEvents = arrayList.get(position);
-        title.setText(viewEvents.getEventTitle());
-        description.setText(viewEvents.getEventDescription());
-        date.setText(viewEvents.getEventDate());
-        time.setText(viewEvents.getEventTime());
-
+        ViewDonors viewDonors = arrayList.get(position);
+        name.setText(viewDonors.getName());
+        address.setText(viewDonors.getAddress());
+        phone.setText(viewDonors.getPhone());
+        bloodGroup.setText(viewDonors.getBloodgroup());
         return convertView;
     }
 }

@@ -30,8 +30,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    private void init()
-    {
+    private void init() {
         nameField = findViewById(R.id.nameField);
         addressField = findViewById(R.id.addressField);
         dobField = findViewById(R.id.dobField);
@@ -43,8 +42,7 @@ public class Register extends AppCompatActivity {
         bloodGroupField = findViewById(R.id.bloodGroup);
     }
 
-    public void getValue()
-    {
+    public void getValue() {
         name = nameField.getText().toString();
         address = addressField.getText().toString();
         dob = dobField.getText().toString();
@@ -55,35 +53,31 @@ public class Register extends AppCompatActivity {
         bloodGroup = bloodGroupField.getSelectedItem().toString();
     }
 
-    public void addUser()
-    {
+    public void addUser() {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getValue();
-                if(name.equals("")||address.equals("")||dob.equals("")||phone.equals("")||email.equals("")||password.equals("")||confirmPassword.equals(""))
-                {
-                    Toast.makeText(getApplicationContext(), "Fields are empty.",Toast.LENGTH_LONG).show();
-                }
-                else{
-                    if(password.equals(confirmPassword))
-                    {
+                if (name.equals("") || address.equals("") || dob.equals("") || phone.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Fields are empty.", Toast.LENGTH_LONG).show();
+                } else {
+                    if (password.equals(confirmPassword)) {
                         Boolean checkEmail = myDb.checkEmail(email);
-                        if (checkEmail==true)
-                        {
+                        if (checkEmail == true) {
                             boolean isInserted = myDb.addUser(name, address, dob, phone, email, password, bloodGroup);
-                            if(isInserted==true)
-                            {
+                            if (isInserted == true) {
                                 Toast.makeText(Register.this, "Registration Success", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(), "Email Already Exists!",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Email Already Exists!", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_SHORT).show();
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

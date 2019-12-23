@@ -3,8 +3,8 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/profile" android:icon="@drawable/profile" android:title="Profile" />
-        <item android:id="@+id/findDonor" android:icon="@drawable/search" android:title="Find Donor" />
-        <item android:id="@+id/donorList" android:icon="@drawable/list" android:title="Donor List" />
+        <item android:id="@+id/searchDonor" android:icon="@drawable/search" android:title="Find Donor" />
+        <item android:id="@+id/donorsListView" android:icon="@drawable/list" android:title="Donor List" />
         <item android:id="@+id/events" android:icon="@drawable/calendar" android:title="Events" />
         <item android:id="@+id/addEvents" android:icon="@drawable/blood_drop" android:title="Add Events" />
         <item android:id="@+id/bmiCalculator" android:icon="@drawable/calculator" android:title="BMI Calculator" />

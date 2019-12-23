@@ -20,7 +20,7 @@
             android:id="@+id/view"/>
 
         <ListView
-            android:id="@+id/donorList"
+            android:id="@+id/donorsListView"
             android:layout_width="match_parent"
             android:layout_height="598dp"
             android:layout_below="@id/view"
